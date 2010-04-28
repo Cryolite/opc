@@ -1,0 +1,86 @@
+[library One-Phase Construction
+  [quickbook 1.5]
+  [version 0.1]
+  [id one_phase_construction]
+  [dirname the_document_dir]
+  [copyright 2010 Ai Azuma]
+  [purpose Constructing objects at once]
+  [category The document's category]
+  [authors [Azuma, Ai]]
+  [license
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+  ]
+]
+
+[section Introduction]
+
+[:[*['["Let there be an object]]]
+
+-- Ai Azuma
+]
+
+In C and C++, objects are often built in a two-phased manner.
+Such a custom sometimes comes from luck of language feature and ability.
+
+In the context shown above, we propose OPC (an abbreviate for *One-Phase Construction*)
+library, whose purposes are given as following;
+
+# To enlighten C++ programmers about impact of ['[*one-phase construction]] on C++ programming.
+# To formalize concept of ['[*one-phase construction]].
+# To present a possible implementation of ['[*one-phase construction]].
+# To show sample application of ['[*one-phase construction]].
+
+[endsect]
+
+[section Background]
+
+In C++,
+
+  Object obj;
+  obj.init(a, b);
+
+This approach;
+
+* revealing an uninitialized state.
+* requiring intermediate objects which is used only for the initialization of the object constructed (see the second case above).
+* =const= qualification cannot appear in the declaration of =obj=.
+* non-static data members of =obj= cannot be qualified by const in general.
+
+
+[endsect]
+
+[section One-Phase Construction Concept]
+
+[heading Refinement of]
+['none]
+
+[heading Associated types]
+
+[table:associated_types_table Associated types
+  [[Heading Name]                          [Heading Type]                 [Description]                                      ]
+  [[A tag type for one-phase construction] [boost::piecewise_construct_t] [A dispatching tag type for one-phase constructors]]
+]
+
+[heading Notation]
+* =X= A type of which an object is to be constructed
+* =a= An bject to be constructed
+* =piecewise_construct= An object of the type =std::piecewise_construct=
+
+[heading Definitions]
+
+[heading Valid expressions]
+The forllowing expressions must be valid.
+
+[heading Expression semantics]
+
+[heading Complexity guarantees]
+
+[heading Invariants]
+
+[heading Models]
+
+[heading Notes]
+
+[endsect]
